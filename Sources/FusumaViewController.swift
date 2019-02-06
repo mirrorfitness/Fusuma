@@ -54,7 +54,7 @@ public extension FusumaDelegate {
 }
 
 public var fusumaBaseTintColor   = UIColor.hex("#c9c7c8", alpha: 1.0)
-public var fusumaTintColor       = UIColor.hex("#424141", alpha: 1.0)
+public var fusumaTintColor       = UIColor.hex("#2B2B2B", alpha: 1.0)
 public var fusumaBackgroundColor = UIColor.hex("#FCFCFC", alpha: 1.0)
 
 public var fusumaCheckImage: UIImage?
@@ -534,23 +534,26 @@ private extension FusumaViewController {
         dishighlightButtons()
         updateDoneButtonVisibility()
 
+        let attrString = NSMutableAttributedString()
         switch mode {
         case .library:
-            titleLabel.text = NSLocalizedString(fusumaCameraRollTitle, comment: fusumaCameraRollTitle)
+            attrString.append(NSAttributedString(string: NSLocalizedString(fusumaCameraRollTitle, comment: fusumaCameraRollTitle).uppercased()))
             highlightButton(libraryButton)
             view.bringSubviewToFront(photoLibraryViewerContainer)
         case .camera:
-            titleLabel.text = NSLocalizedString(fusumaCameraTitle, comment: fusumaCameraTitle)
+            attrString.append(NSAttributedString(string: NSLocalizedString(fusumaCameraTitle, comment: fusumaCameraTitle).uppercased()))
             highlightButton(cameraButton)
             view.bringSubviewToFront(cameraShotContainer)
             cameraView.startCamera()
         case .video:
-            titleLabel.text = NSLocalizedString(fusumaVideoTitle, comment: fusumaVideoTitle)
+            attrString.append(NSAttributedString(string: NSLocalizedString(fusumaVideoTitle, comment: fusumaVideoTitle).uppercased()))
             highlightButton(videoButton)
             view.bringSubviewToFront(videoShotContainer)
             videoView.startCamera()
         }
-
+        attrString.addAttribute(.kern, value: 1.5, range: NSRange(location: 0, length: attrString.string.count))
+        titleLabel.attributedText = attrString
+        
         view.bringSubviewToFront(statusBarView)
         view.bringSubviewToFront(menuView)
     }
