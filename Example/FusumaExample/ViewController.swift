@@ -31,6 +31,7 @@ class ViewController: UIViewController, FusumaDelegate {
         fusuma.photoSelectionLimit = 4
         fusumaSavesImage = true
         fusuma.disableLibraryGesture = true
+        fusuma.autoSelectFirstImage = true
 
         present(fusuma, animated: true, completion: nil)
     }

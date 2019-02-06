@@ -287,7 +287,7 @@ public struct ImageMetadata {
             cameraView.initialCaptureDevicePosition = cameraPosition
         }
 
-        doneButton.isEnabled = availableModes.contains(.camera) && autoSelectFirstImage
+        doneButton.isEnabled = availableModes.contains(.library) && autoSelectFirstImage
     }
 
     override public func viewDidAppear(_ animated: Bool) {
