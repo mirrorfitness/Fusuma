@@ -312,11 +312,6 @@ public struct ImageMetadata {
         }
     }
 
-//    public override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        stopAll()
-//    }
-
     public override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         stopAll()
