@@ -57,9 +57,9 @@ final class FSCameraView: UIView, UIGestureRecognizerDelegate {
         let flipImage = fusumaFlipImage != nil ? fusumaFlipImage : UIImage(named: "ic_loop", in: bundle, compatibleWith: nil)
         let shotImage = fusumaShotImage != nil ? fusumaShotImage : UIImage(named: "ic_shutter", in: bundle, compatibleWith: nil)
 
-        flashButton.tintColor = UIColor.hex("#555555", alpha: 1.0)
-        flipButton.tintColor  = UIColor.hex("#555555", alpha: 1.0)
-        shotButton.tintColor  = UIColor.hex("#2B2B2B", alpha: 1.0)
+        flashButton.tintColor = fusumaBaseTintColor
+        flipButton.tintColor  = fusumaBaseTintColor
+        shotButton.tintColor  = fusumaBaseTintColor
 
         flashButton.setImage(flashOffImage?.withRenderingMode(.alwaysTemplate), for: .normal)
         flipButton.setImage(flipImage?.withRenderingMode(.alwaysTemplate), for: .normal)
