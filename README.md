@@ -1,3 +1,7 @@
+# NOTE: This project is no longer maintained.
+
+We highly recommend [YPImagePicker](https://github.com/Yummypets/YPImagePicker).
+
 ## Fusuma
 
 Fusuma is a Swift library that provides an Instagram-like photo browser with a camera feature using only a few lines of code.  
@@ -45,7 +49,7 @@ pod 'Fusuma'
 #### Swift 3
 The latest version does support Swift 4.2. If you're still using Swift 3, you can install Fusuma as follows:
 
-`pod 'Fusuma', github: 'git@github.com:ytakzk/Fusuma.git', branch: 'swift-3'`
+`pod 'Fusuma', git: 'git@github.com:ytakzk/Fusuma.git', branch: 'swift-3'`
 
 ## Fusuma Usage
 Import Fusuma ```import Fusuma``` then use the following codes in some function except for viewDidLoad and give FusumaDelegate to the view controller.  
