@@ -377,14 +377,16 @@ public struct ImageMetadata {
                                   width: normalizedWidth, height: normalizedHeight)
 
             requestImage(with: self.albumView.phAsset, cropRect: cropRect) { (asset, image) in
-                self.delegate?.fusumaImageSelected(image, source: self.mode)
-                self.doDismiss {
-                    self.delegate?.fusumaDismissedWithImage(image, source: self.mode)
+                DispatchQueue.main.async {
+                    self.delegate?.fusumaImageSelected(image, source: self.mode)
+                    self.doDismiss {
+                        self.delegate?.fusumaDismissedWithImage(image, source: self.mode)
+                    }
+
+                    let metaData = self.getMetaData(asset: asset)
+
+                    self.delegate?.fusumaImageSelected(image, source: self.mode, metaData: metaData)
                 }
-
-                let metaData = self.getMetaData(asset: asset)
-
-                self.delegate?.fusumaImageSelected(image, source: self.mode, metaData: metaData)
             }
         } else {
             delegate?.fusumaImageSelected(view.image, source: mode)
@@ -396,7 +398,7 @@ public struct ImageMetadata {
     }
 
     private func requestImage(with asset: PHAsset, cropRect: CGRect, completion: @escaping (PHAsset, UIImage) -> Void) {
-        DispatchQueue.global(qos: .default).async(execute: {
+//        DispatchQueue.global(qos: .default).async(execute: {
             let options = PHImageRequestOptions()
             options.deliveryMode = .highQualityFormat
             options.isNetworkAccessAllowed = true
@@ -417,7 +419,7 @@ public struct ImageMetadata {
                     completion(asset, result)
                 })
             }
-        })
+//        })
     }
 
     private func fusumaDidFinishInMultipleMode() {
